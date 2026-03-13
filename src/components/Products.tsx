@@ -1,14 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import { getProducts } from "../api/cart.endpoints";
-
-interface Product {
-  id: number;
-  title: string;
-  price: number;
-  image: string;
-  category: string;
-  rating: { rate: number; count: number };
-}
+import type { Product } from "../types";
+import { useDispatch } from "react-redux";
+import { add } from "../store/cart.slice";
 
 const starString = (rate: number) => {
   const full = Math.round(rate);
@@ -16,6 +10,7 @@ const starString = (rate: number) => {
 };
 
 const Products = () => {
+  const dispatch = useDispatch();
   const {
     data: products,
     isLoading,
@@ -35,6 +30,10 @@ const Products = () => {
     return <div>Error...</div>;
   }
 
+  const handleAddToCart = (product: Product) => {
+    dispatch(add(product));
+  };
+
   return (
     <div className="productsWrapper">
       {products?.map((product: Product) => (
@@ -53,7 +52,12 @@ const Products = () => {
             </div>
             <div className="cardFooter">
               <span className="cardPrice">${product.price.toFixed(2)}</span>
-              <button className="btnAdd">Add to cart</button>
+              <button
+                className="btnAdd"
+                onClick={() => handleAddToCart(product)}
+              >
+                Add to cart
+              </button>
             </div>
           </div>
         </div>
