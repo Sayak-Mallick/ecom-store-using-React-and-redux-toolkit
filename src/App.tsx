@@ -1,9 +1,16 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Home from "./pages/Home";
+import Cart from "./pages/Cart";
+
 function App() {
   return (
     <>
-      <section id="center">
-        <h1 className="text-3xl font-bold underline">Hello world!</h1>
-      </section>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
