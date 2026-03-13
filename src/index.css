@@ -1,2 +1,60 @@
 @import "tailwindcss";
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #f5f5f7;
+  color: #1a1a2e;
+}
+
+/* ── Navbar ─────────────────────────────────────── */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 2rem;
+  height: 60px;
+  background: #1a1a2e;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.navbar > div {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.navlink {
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 400;
+  transition: color 0.2s;
+}
+
+.navlink:hover {
+  color: #fff;
+}
+
+.cartCount {
+  font-size: 13px;
+  background: #4f46e5;
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 20px;
+  font-weight: 500;
+}
