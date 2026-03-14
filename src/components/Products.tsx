@@ -3,6 +3,7 @@ import { getProducts } from "../api/cart.endpoints";
 import type { Product } from "../types";
 import { useDispatch } from "react-redux";
 import { add } from "../store/cart.slice";
+import { ProductSkeleton } from "./ProductSkeleton";
 
 const starString = (rate: number) => {
   const full = Math.round(rate);
@@ -23,7 +24,13 @@ const Products = () => {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div className="productsWrapper">
+        {Array.from({ length: 24 }).map((_, i) => (
+          <ProductSkeleton key={i} />
+        ))}
+      </div>
+    );
   }
 
   if (isError) {
