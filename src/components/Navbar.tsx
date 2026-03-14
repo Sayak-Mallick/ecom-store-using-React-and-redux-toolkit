@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import type { Product } from "../types";
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
-
+  const items = useSelector((state: { cart: Product[] }) => state.cart);
   return (
     <div className="navbar">
       <div className="navbarTop">
@@ -26,7 +28,7 @@ const Navbar = () => {
         <Link className="navlink" to="/cart" onClick={() => setOpen(false)}>
           Cart
         </Link>
-        <span className="cartCount">Cart Items: 0</span>
+        <span className="cartCount">Cart Items: {items.length}</span>
       </div>
     </div>
   );
